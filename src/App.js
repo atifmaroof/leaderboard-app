@@ -1,24 +1,27 @@
-import logo from './logo.svg';
+import React from "react";
 import './App.css';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
+import Header from './components/header';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import LeaderboardPage from "./pages/Leaderboard";
+import AddUser from "./pages/AddUser";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  return (<Router>
+    <div>
+      <Header />
+      <Switch>
+        <Route path="/" component={LeaderboardPage} exact></Route>
+        <Route path="/add-user" component={AddUser} exact></Route>
+      </Switch>
     </div>
+    <ToastContainer />
+  </Router>
   );
 }
 
